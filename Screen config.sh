@@ -81,6 +81,17 @@ then
     xrandr --addmode ${screens[(src-1)]} ${newResolution[13]};
     xrandr --output ${screens[(src-1)]}  --mode ${newResolution[13]} --${direction[(dir-1)]}-of ${disponibles[(dir_scr-1)]};
 
+    echo "¿Deseas generar un script para ejecutarlo sin tener que hacer este proceso de nuevo? [s/n]:"
+    read resp
+    if [ $resp == "s" ]
+    then
+        touch "pantalla.sh"
+        echo "xrandr --newmode ${newResolution[13]}  ${newResolution[14]}  ${newResolution[15]} ${newResolution[16]} ${newResolution[17]} ${newResolution[18]}  ${newResolution[19]} ${newResolution[20]} ${newResolution[21]} ${newResolution[22]} ${newResolution[23]} ${newResolution[24]};" >> pantalla.sh;
+        echo "xrandr --addmode ${screens[(src-1)]} ${newResolution[13]};" >> pantalla.sh;
+        echo "xrandr --output ${screens[(src-1)]}  --mode ${newResolution[13]} --${direction[(dir-1)]}-of ${disponibles[(dir_scr-1)]};" >> pantalla.sh;
+        chmod +x pantalla.sh;
+    fi
+
 else
 
     echo "Configurando " ${screens[(src-1)]} "con la resolucion de " ${resolution[(size-1)]}
