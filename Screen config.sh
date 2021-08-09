@@ -35,7 +35,17 @@ do
 done
 
 echo -n "Opcion: " 
-read size
+read size;
+
+
+#read maunal size 
+if [ $size -eq 5 ]
+then
+	echo -n "tamaño: "
+	read resolution[4];
+	echo ${resolution[4]};
+fi
+
 
 
 disponibles=( $screens )
